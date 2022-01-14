@@ -1,4 +1,4 @@
-import {React,useState} from "react";
+import {useState} from "react";
 import axios from 'axios'
 
 const Login=()=>{
@@ -14,14 +14,14 @@ const Login=()=>{
            headers: {
            'Content-Type': 'application/json',
            }
-       }).then((res)=>{
-            console.log(res.data.user)
-               
-            if(res.data.user){
+       }).then((res)=>{      
+            if(res.data){
                 alert('login sucessfully')
                 window.location.href='/dashboard'
+                localStorage.setItem('userdata',JSON.stringify(res.data))
                }else{
                 alert('check ur username or password')
+                window.location.href='/dashboard'
                }
            }).catch((err)=>{
                alert(err)

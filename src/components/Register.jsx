@@ -1,13 +1,13 @@
-import {React,useEffect,useState} from "react";
+import {useState} from "react";
 import axios from 'axios'
 
 const Register=()=>{
     const [username,setName]=useState('')
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
- 
+
     const registeruser=async (e)=>{
-        e.preventDefault()
+    e.preventDefault()
      await  axios.post('http://localhost:5000/api/register',{
         username:username,
         email:email,
@@ -17,10 +17,13 @@ const Register=()=>{
         'Content-Type': 'application/json',
         }
     }).then((res)=>{
-            
+
+        if(res.data.status === "ok"){
             alert('registered sucessfully')
+            window.location.href='/login'
+            }
         }).catch((err)=>{
-            alert(err)
+            alert("unable to register")
         })
     }
     return(
