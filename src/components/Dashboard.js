@@ -22,8 +22,8 @@ const Dashboard = ()=> {
         <div> 
      {user.map((a)=>{
          return(
-             <h1>hello {a.users.username}</h1>
-         
+             <h1>hello {a.user.username}</h1>
+             
      )})}
         </div>
     )
